@@ -66,6 +66,9 @@ export const Menu = styled.aside`
   height: 100vh;
   width: 100%;
   inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
@@ -99,7 +102,7 @@ export const Menu = styled.aside`
     }
   }
 
-  > div {
+  > div > div {
     padding: 36px 28px;
     display: flex;
     gap: 36px;
