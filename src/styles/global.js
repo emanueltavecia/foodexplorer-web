@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { deviceBreakpoints } from './deviceBreakpoints'
 
 export default createGlobalStyle`
   * {
@@ -8,6 +9,14 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  :root {
+    font-size: 16px;
+
+    @media (max-width: ${deviceBreakpoints.md}) {
+      font-size: 14px;
+    }
   }
   
   body {
