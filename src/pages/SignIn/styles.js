@@ -23,7 +23,7 @@ export const Container = styled.div`
 
   @media (min-width: ${deviceBreakpoints.lg}) {
     align-items: center;
-    padding-inline: 112px;
+    padding: 1rem 112px;
     grid-template-columns: 1fr 1fr;
 
     .logo-text {
@@ -40,10 +40,12 @@ export const Form = styled.form`
   max-width: 476px;
   width: 100%;
 
+  margin-top: 4rem;
+
   > div {
     width: 100%;
   }
-  
+
   > h1 {
     font-family: 'Poppins';
     font-weight: 500;
@@ -52,11 +54,12 @@ export const Form = styled.form`
     text-align: center;
     display: none;
   }
-  
+
   @media (min-width: ${deviceBreakpoints.lg}) {
     border-radius: 1rem;
     padding: 4rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_700};
+    margin: 0;
 
     > h1 {
       display: block;

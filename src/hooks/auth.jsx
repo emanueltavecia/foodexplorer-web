@@ -8,38 +8,32 @@ function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api.post('/sessions', { email, password })
+      const response = await api.post(
+        '/sessions',
+        { email, password },
+        { withCredentials: true }
+      )
 
-      const { user, token } = response.data
-      setData({ user, token })
-
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+      const { user } = response.data
 
       localStorage.setItem('@food-explorer:user', JSON.stringify(user))
-      localStorage.setItem('@food-explorer:token', token)
+
+      setData({ user })
     } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message)
-      } else {
-        alert('Não foi possível entrar.')
-        console.error(error)
-      }
+      return error
     }
   }
 
   function signOut() {
     setData({})
     localStorage.removeItem('@food-explorer:user')
-    localStorage.removeItem('@food-explorer:token')
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('@food-explorer:token')
     const user = localStorage.getItem('@food-explorer:user')
 
-    if (token && user) {
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      setData({ user: JSON.parse(user), token })
+    if (user) {
+      setData({ user: JSON.parse(user) })
     }
   }, [])
 

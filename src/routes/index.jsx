@@ -10,9 +10,9 @@ export function Routes() {
 
   function AccessRoute() {
     switch (user.role) {
-      case userRoles.admin:
+      case 'admin':
         return <AdminRoutes />
-      case userRoles.customer:
+      case 'customer':
         return <CustomerRoutes />
       default:
         return <CustomerRoutes />
