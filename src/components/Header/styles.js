@@ -72,7 +72,7 @@ export const Menu = styled.aside`
 
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-  z-index: 1;
+  z-index: 2;
 
   transform: translateX(-100%);
 

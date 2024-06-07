@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 import { deviceBreakpoints } from '../../styles/deviceBreakpoints'
 
-export const Container = styled.main`
-  max-width: 1122px;
-  margin: 0 auto;
+export const Container = styled.div`
+  height: calc(100vh - 104px);
+  overflow-y: auto;
+`
+
+export const Main = styled.main`
   padding: 60px 28px 28px;
 
-  > div {
+  > .banner {
+    max-width: 1122px;
+    margin: 0 auto;
     display: grid;
     grid-template-areas: 'img details';
     grid-template-columns: 1fr 1fr;
