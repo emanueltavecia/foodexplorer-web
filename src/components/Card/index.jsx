@@ -6,16 +6,12 @@ import { PlusIcon } from '../../assets/icons/plus-icon'
 import Img from '../../assets/teste.png'
 import { Button } from '../Button'
 import { Container } from './styles'
+import { format } from '../../utils/moneyFormatter'
 
 export function Card({ product, ...props }) {
   const [quantity, setQuantity] = useState(0)
 
   const navigate = useNavigate()
-
-  const { format } = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
 
   return (
     <Container {...props}>

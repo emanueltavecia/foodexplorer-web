@@ -1,11 +1,29 @@
+import { useEffect, useState } from 'react'
 import BannerImage from '../../assets/banner-image.png'
-import { Card } from '../../components/Card'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
+import { api } from '../../services/api'
 import { Container, Main } from './styles'
 
 export function Home() {
+  const [dishes, setDishes] = useState()
+
+  useEffect(() => {
+    async function fetchDishes() {
+      const response = await api.get('/dishes')
+      setDishes({
+        meals: response.data.filter((dish) => dish.category === 'Refeições'),
+        desserts: response.data.filter(
+          (dish) => dish.category === 'Sobremesas'
+        ),
+        drinks: response.data.filter((dish) => dish.category === 'Bebidas'),
+      })
+    }
+
+    fetchDishes()
+  }, [])
+
   return (
     <>
       <Header />
@@ -20,38 +38,17 @@ export function Home() {
             </div>
           </div>
 
-          <Section title="Refeições">
-            <Card
-              product={{
-                id: 1,
-                name: 'Spaguetti Gambe',
-                description: 'Massa fresca com camarões e pesto.',
-                price: 79.97,
-              }}
-            />
-          </Section>
+          {dishes?.meals.length >= 1 && (
+            <Section title="Refeições" dishes={dishes.meals} />
+          )}
 
-          <Section title="Refeições">
-            <Card
-              product={{
-                id: 1,
-                name: 'Spaguetti Gambe',
-                description: 'Massa fresca com camarões e pesto.',
-                price: 79.97,
-              }}
-            />
-          </Section>
+          {dishes?.desserts.length >= 1 && (
+            <Section title="Sobremesas" dishes={dishes.desserts} />
+          )}
 
-          <Section title="Refeições">
-            <Card
-              product={{
-                id: 1,
-                name: 'Spaguetti Gambe',
-                description: 'Massa fresca com camarões e pesto.',
-                price: 79.97,
-              }}
-            />
-          </Section>
+          {dishes?.drinks.length >= 1 && (
+            <Section title="Bebidas" dishes={dishes.drinks} />
+          )}
         </Main>
 
         <Footer />
