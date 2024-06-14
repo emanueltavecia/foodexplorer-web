@@ -10,13 +10,13 @@ export const Container = styled.div`
 
   > div {
     padding: 24px 28px 28px;
-    max-width: 1122px;
-    width: 100%;
-    margin: 0 auto;
   }
 `
 
 export const Main = styled.main`
+  max-width: 1122px;
+  margin: 0 auto;
+
   svg {
     width: 1.5rem;
     height: 1.5rem;
