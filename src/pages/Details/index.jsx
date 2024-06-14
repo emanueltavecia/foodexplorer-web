@@ -7,6 +7,7 @@ import { ReceiptIcon } from '../../assets/icons/receipt-icon'
 import { Button } from '../../components/Button'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
+import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { format } from '../../utils/moneyFormatter'
 import { Container, Ingredient, Main } from './styles'
@@ -17,6 +18,7 @@ export function Details() {
 
   const params = useParams()
   const navigate = useNavigate()
+  const { user } = useAuth()
 
   useEffect(() => {
     async function fetchDish() {
@@ -61,30 +63,38 @@ export function Details() {
                   ))}
                 </div>
 
-                <div>
-                  <div className="controls">
-                    <Button
-                      icon={MinusIcon}
-                      variant="link"
-                      onClick={() => setQuantity((prev) => prev - 1)}
-                      disabled={quantity < 1}
-                    />
+                {user.role !== 'admin' && (
+                  <div>
+                    <div className="controls">
+                      <Button
+                        icon={MinusIcon}
+                        variant="link"
+                        onClick={() => setQuantity((prev) => prev - 1)}
+                        disabled={quantity < 1}
+                      />
 
-                    <span>{quantity}</span>
+                      <span>{quantity}</span>
 
-                    <Button
-                      icon={PlusIcon}
-                      variant="link"
-                      onClick={() => setQuantity((prev) => prev + 1)}
-                    />
+                      <Button
+                        icon={PlusIcon}
+                        variant="link"
+                        onClick={() => setQuantity((prev) => prev + 1)}
+                      />
+                    </div>
+
+                    <Button icon={ReceiptIcon} className="addButton">
+                      <span className="mobile">pedir</span>
+                      <span className="desktop">incluir</span> ∙{' '}
+                      {format(dish?.price)}
+                    </Button>
                   </div>
+                )}
 
-                  <Button icon={ReceiptIcon} className="addButton">
-                    <span className="mobile">pedir</span>
-                    <span className="desktop">incluir</span> ∙{' '}
-                    {format(dish?.price)}
+                {user.role === 'admin' && (
+                  <Button className="edit-button" onClick={() => navigate(`/edit/${dish?.id}`)}>
+                    Editar prato
                   </Button>
-                </div>
+                )}
               </div>
             </div>
           </Main>

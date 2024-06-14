@@ -15,7 +15,7 @@ import { Container, Menu } from './styles'
 export function Header() {
   const [menuIsOpen, setMenuIsOpen] = useState()
 
-  const { signOut } = useAuth()
+  const { user, signOut } = useAuth()
 
   const navigate = useNavigate()
 
@@ -40,7 +40,13 @@ export function Header() {
             icon={SearchIcon}
             className="search"
           />
-          <OrdersButton />
+
+          {user.role !== 'admin' && <OrdersButton />}
+
+          {user.role === 'admin' && (
+            <Button onClick={() => navigate('/new')}>Novo prato</Button>
+          )}
+
           <Button
             className="sign-out"
             variant="link"
@@ -68,11 +74,17 @@ export function Header() {
               className="search"
             />
 
-            <div>
+            <nav>
+              {user.role === 'admin' && (
+                <Button variant="link" onClick={() => navigate('/new')}>
+                  Novo prato
+                </Button>
+              )}
+
               <Button variant="link" onClick={handleSignOut}>
                 Sair
               </Button>
-            </div>
+            </nav>
           </div>
         </div>
 

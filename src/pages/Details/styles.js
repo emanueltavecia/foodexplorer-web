@@ -154,6 +154,15 @@ export const Main = styled.main`
           justify-content: flex-start;
         }
       }
+
+      .edit-button {
+        width: 100%;
+        max-width: 316px;
+
+        @media (min-width: ${deviceBreakpoints.md}) {
+          width: fit-content;
+        }
+      }
     }
   }
 `

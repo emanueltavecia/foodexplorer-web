@@ -18,6 +18,7 @@ export const Container = styled.footer`
   }
 
   > div > div {
+    margin: 0;
     color: ${({ theme }) => theme.COLORS.LIGHT_700};
     gap: 0.5rem;
     svg {
@@ -27,6 +28,10 @@ export const Container = styled.footer`
       path {
         fill: ${({ theme }) => theme.COLORS.LIGHT_700};
       }
+    }
+
+    span {
+      display: none;
     }
   }
 `

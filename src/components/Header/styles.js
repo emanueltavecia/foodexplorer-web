@@ -58,6 +58,15 @@ export const Container = styled.header`
         display: none;
       }
     }
+
+    button {
+      max-width: 216px;
+      display: none;
+
+      @media (min-width: ${deviceBreakpoints.md}) {
+        display: flex;
+      }
+    }
   }
 `
 
@@ -107,11 +116,15 @@ export const Menu = styled.aside`
     display: flex;
     gap: 36px;
     flex-direction: column;
+  }
 
-    button {
-      font-size: 24px;
-      font-weight: 300;
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    }
+  nav button {
+    font-size: 24px;
+    font-weight: 300;
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    padding: 0.714rem;
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+    width: 100%;
+    justify-content: left;
   }
 `
