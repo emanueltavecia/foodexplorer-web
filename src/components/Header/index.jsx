@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { CloseIcon } from '../../assets/icons/close-icon'
 import { MenuIcon } from '../../assets/icons/menu-icon'
 import { SearchIcon } from '../../assets/icons/search-icon'
@@ -12,12 +12,13 @@ import { Logo } from '../Logo'
 import { OrdersButton } from '../OrdersButton'
 import { Container, Menu } from './styles'
 
-export function Header() {
+export function Header({ setSearch }) {
   const [menuIsOpen, setMenuIsOpen] = useState()
 
   const { user, signOut } = useAuth()
 
   const navigate = useNavigate()
+  const location = useLocation()
 
   function handleSignOut() {
     navigate('/')
@@ -39,6 +40,9 @@ export function Header() {
             placeholder="Busque por pratos ou ingredientes"
             icon={SearchIcon}
             className="search"
+            onChange={(e) => setSearch(e.target.value)}
+            autoFocus={location.pathname === '/'}
+            onFocus={() => location.pathname !== '/' && navigate('/')}
           />
 
           {user.role !== 'admin' && <OrdersButton />}

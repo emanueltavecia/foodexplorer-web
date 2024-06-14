@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { deviceBreakpoints } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
-  height: calc(100vh - 104px);
+  height: calc(100vh - 100px);
   overflow-y: auto;
 `
 

@@ -59,7 +59,7 @@ export function Details() {
 
                 <div className="ingredients">
                   {dish?.ingredients.map((ingredient) => (
-                    <Ingredient>{ingredient?.name}</Ingredient>
+                    <Ingredient key={ingredient.id}>{ingredient?.name}</Ingredient>
                   ))}
                 </div>
 

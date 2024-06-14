@@ -8,10 +8,11 @@ import { Container, Main } from './styles'
 
 export function Home() {
   const [dishes, setDishes] = useState()
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get('/dishes')
+      const response = await api.get(`/dishes?search=${search}`)
       setDishes({
         meals: response.data.filter((dish) => dish.category === 'Refeições'),
         desserts: response.data.filter(
@@ -22,11 +23,11 @@ export function Home() {
     }
 
     fetchDishes()
-  }, [])
+  }, [search])
 
   return (
     <>
-      <Header />
+      <Header setSearch={setSearch} />
 
       <Container>
         <Main>
