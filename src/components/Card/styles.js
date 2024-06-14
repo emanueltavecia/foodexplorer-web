@@ -25,6 +25,7 @@ export const Container = styled.div`
   > img {
     width: 88px;
     height: 88px;
+    border-radius: 1rem;
 
     @media (min-width: ${deviceBreakpoints.md}) {
       width: 176px;

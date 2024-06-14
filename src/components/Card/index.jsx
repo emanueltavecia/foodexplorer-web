@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { HeartIcon } from '../../assets/icons/heart-icon'
 import { MinusIcon } from '../../assets/icons/minus-icon'
 import { PlusIcon } from '../../assets/icons/plus-icon'
-import Img from '../../assets/teste.png'
 import { Button } from '../Button'
 import { Container } from './styles'
 import { format } from '../../utils/moneyFormatter'
+import { api } from '../../services/api'
 
 export function Card({ product, ...props }) {
   const [quantity, setQuantity] = useState(0)
@@ -17,7 +17,10 @@ export function Card({ product, ...props }) {
     <Container {...props}>
       <HeartIcon />
 
-      <img src={Img} alt="" />
+      <img
+        src={`${api.defaults.baseURL}/files/${product?.image}`}
+        alt={`Imagem do prato ${product?.name}`}
+      />
       <h3 onClick={() => navigate(`/details/${product.id}`)}>
         {product.name} &gt;
       </h3>

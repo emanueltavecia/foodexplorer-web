@@ -6,7 +6,7 @@ export function Footer() {
     <Container>
       <div>
         <Logo />
-        <p>© 2023 - Todos os direitos reservados.</p>
+        <p>© 2024 - Todos os direitos reservados.</p>
       </div>
     </Container>
   )

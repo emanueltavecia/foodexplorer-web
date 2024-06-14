@@ -31,7 +31,7 @@ export function Home() {
       <Container>
         <Main>
           <div className="banner">
-            <img src={BannerImage} alt="Imagem de ilustração" />
+            <img src={BannerImage} alt="Banner da página inicial" />
             <div>
               <h2>Sabores inigualáveis</h2>
               <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
