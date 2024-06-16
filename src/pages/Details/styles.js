@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { deviceBreakpoints } from '../../styles/deviceBreakpoints'
 
 export const Container = styled.div`
-  height: calc(100vh - 104px);
+  height: calc(100vh - 100px);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -27,6 +27,8 @@ export const Main = styled.main`
     font-size: 1.5rem;
     line-height: 140%;
     font-weight: 500;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
 
     margin-bottom: 1rem;
 

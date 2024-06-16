@@ -14,11 +14,11 @@ export function Home() {
     async function fetchDishes() {
       const response = await api.get(`/dishes?search=${search}`)
       setDishes({
-        meals: response.data.filter((dish) => dish.category === 'Refeições'),
+        meals: response.data.filter((dish) => dish.category === 'Refeição'),
         desserts: response.data.filter(
-          (dish) => dish.category === 'Sobremesas'
+          (dish) => dish.category === 'Sobremesa'
         ),
-        drinks: response.data.filter((dish) => dish.category === 'Bebidas'),
+        drinks: response.data.filter((dish) => dish.category === 'Bebida'),
       })
     }
 

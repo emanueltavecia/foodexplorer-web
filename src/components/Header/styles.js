@@ -124,6 +124,7 @@ export const Menu = styled.aside`
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
     padding: 0.714rem;
     border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
+    border-radius: 0;
     width: 100%;
     justify-content: left;
   }
