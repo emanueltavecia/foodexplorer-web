@@ -56,6 +56,21 @@ export function Edit() {
     }
   }
 
+  function handleDelete() {
+    const confirm = window.confirm('Deseja realmente excluir este prato?')
+
+    if (confirm) {
+      api
+        .delete(`/dishes/${params.id}`)
+        .then(() => {
+          navigate('/')
+        })
+        .catch(() => {
+          alert('Erro ao excluir prato')
+        })
+    }
+  }
+
   function handleChangeAvatar(event) {
     const file = event.target.files[0]
     setDishImage(file)
@@ -161,7 +176,12 @@ export function Edit() {
                 />
               </Label>
 
-              <Button type="submit">Salvar</Button>
+              <div className="controls">
+                <Button type="button" onClick={handleDelete}>
+                  Excluir prato
+                </Button>
+                <Button type="submit">Salvar alterações</Button>
+              </div>
             </Form>
           </Main>
         </div>

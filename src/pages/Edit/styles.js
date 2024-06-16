@@ -173,7 +173,27 @@ export const Form = styled.form`
     }
   }
 
-  > button {
-    background-color: #894047;
+  .controls {
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 1rem;
+
+    @media (min-width: ${deviceBreakpoints.md}) {
+      gap: 2rem;
+    }
+
+    > button {
+      background-color: ${({ theme }) => theme.COLORS.DARK_900};
+      font-size: 0.875rem;
+      padding-inline: 1rem;
+
+      @media (min-width: ${deviceBreakpoints.md}) {
+        width: fit-content;
+      }
+    }
+
+    > button:nth-child(2) {
+      background-color: #894047;
+    }
   }
 `
