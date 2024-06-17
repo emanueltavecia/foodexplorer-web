@@ -8,6 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  justify-content: space-between;
 
   background: ${({ theme }) => theme.COLORS.DARK_200};
   border-radius: 0.5rem;
