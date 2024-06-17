@@ -31,8 +31,4 @@ export const Container = styled.div`
     right: -20px;
     z-index: 2;
   }
-
-  > div {
-    gap: 0.4rem;
-  }
 `

@@ -1,21 +1,12 @@
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import { LeftIcon } from '../../assets/icons/left-icon'
 import { RightIcon } from '../../assets/icons/right-icon'
-import { deviceBreakpoints } from '../../styles/deviceBreakpoints'
 import { Card } from '../Card'
 import { Container } from './styles'
 
 export function Section({ dishes, title, ...props }) {
-  const isMobile = useMediaQuery({
-    query: `(max-width: ${deviceBreakpoints.sm})`,
-  })
-  const isTablet = useMediaQuery({
-    query: `(max-width: ${deviceBreakpoints.md})`,
-  })
-
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [sliderRef, instanceRef] = useKeenSlider(
@@ -27,8 +18,17 @@ export function Section({ dishes, title, ...props }) {
       created() {
         setLoaded(true)
       },
+      breakpoints: {
+        '(min-width: 625px)': {
+          slides: { perView: 2.5, spacing: 20 },
+        },
+        '(min-width: 1024px)': {
+          slides: { perView: 3.5, spacing: 27 },
+        },
+      },
       slides: {
-        perView: isMobile ? 1.5 : isTablet ? 2.5 : 3.5,
+        perView: 1.5,
+        spacing: 16,
       },
     },
     []
