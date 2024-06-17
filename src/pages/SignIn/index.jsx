@@ -18,7 +18,9 @@ export function SignIn() {
 
   function handleSignIn(e) {
     e.preventDefault()
-    signIn({ email, password }).catch((error) => console.log(error))
+    if (email && password) {
+      signIn({ email, password }).catch((error) => console.log(error))
+    }
   }
 
   return (
