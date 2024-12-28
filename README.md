@@ -13,9 +13,9 @@ Final Challenge of Rocketseat Explorer, a full-stack formation.
 
 ## 🔗 Project Links
 
-- 🚀 [**Deploy**](https://foodexplorer-api-dhrq.onrender.com)
+- 🚀 [**Deploy**](https://foodexplorer-web-orpin.vercel.app/)
 - 🎨 [**Figma**](https://www.figma.com/community/file/1196874589259687769)
-- 🔙 [**Back-end**](https://github.com/emanueltavecia/foodexplorer-web)
+- 🔙 [**Back-end**](https://github.com/emanueltavecia/foodexplorer-api)
 
 ## Registered Users
 
